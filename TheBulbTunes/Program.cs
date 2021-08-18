@@ -9,10 +9,32 @@ namespace TheBulbTunes
     {
         static void Main(string[] args)
         {
+
+
+            UserService userService = new UserService();
+
+            userService.Create("Temiloluwa", "Tegbe", "temiloluwau.tegbe@thebulb.africa");
+            userService.Create("Adeleke", "Ayinde", "adeleke.ayinde@thebulb.africa");
+            userService.Create("Ndudim", "Hope", "hope.ndudim@thebulb.africa");
+            userService.Create("Bayowa", "Odometa", "bayowa.odometa@thebulb.africa");
+            userService.Create("Nkechi", "Okeke", "nkechi.okeke@gmail.com");
+
+            List<User> availableUsers = userService.FetchAll();
+
+            Console.WriteLine("First Name \t\tLast Name \t\tEmail");
+
+            foreach (User user in availableUsers)
+            {
+                Console.WriteLine("\n\n");
+                Console.Write($"{user.FirstName}\t{user.LastName}\t{user.EmailAddress}");
+            }
+
+
+
             SongService songService = new SongService();
 
 
-#region  Using the Update and Delete Method 
+            #region  Using the Update and Delete Method 
 
 
             //Fetch all songs before Update  
