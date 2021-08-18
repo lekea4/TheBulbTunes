@@ -85,6 +85,49 @@ namespace TheBulbTunes.EFDataService.EntityServices
 
       //Update Song
 
+        public void Update(Guid id, Song songUpdatedInfo)
+        {
+            //Check if a song with the supplied id exists 
+
+            Song songToUpdate = FetchAll()
+                .Where(s => s.SongID == id)
+                .FirstOrDefault();
+
+            if (songToUpdate == null)
+            {
+                Console.WriteLine("Invalid operation! No match was found for the id you supplied");
+                return;
+            }
+
+            // A match song was found. perform the requested update
+
+            if (songToUpdate.Title != null) songToUpdate.Title = songToUpdate.Title;
+            if (songToUpdate.Artist != null) songToUpdate.Artist = songToUpdate.Artist;
+            if (songToUpdate.Album != null) songToUpdate.Album = songToUpdate.Album;
+            if (songToUpdate.Genre != null) songToUpdate.Genre = songToUpdate.Genre;
+            if (songToUpdate.FeaturedArtist != null) songToUpdate.FeaturedArtist= songToUpdate.FeaturedArtist;
+            if (songToUpdate.ReleasedDate != null) songToUpdate.ReleasedDate = songToUpdate.ReleasedDate;
+
+            _context.SaveChanges();
+        }
+
        //Delete Song
+       public void Delete (Guid id)
+        {
+
+            Song songToDelete = FetchAll()
+                .Where(s => s.SongID == id)
+                .FirstOrDefault();
+
+            if (songToDelete == null)
+            {
+                Console.WriteLine("Invalid operation! No match was found for the id you supplied");
+                return;
+            }
+
+            _context.Songs.Remove(songToDelete);
+            _context.SaveChanges();
+
+        }
     }
 }
