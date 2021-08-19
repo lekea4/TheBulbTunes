@@ -66,10 +66,33 @@ namespace TheBulbTunes.EFDataService.EntityServices
             return users.Where(u => u.EmailAddress.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
+        //Update User
+        public void Update (Guid id, User userUpdateInfo)
+        {
+            //check if the user exists
+            User userToUpdate = FetchAll()
+                 .Where(u => u.UserID == id)
+                 .FirstOrDefault();
+
+            if (userToUpdate == null)
+            {
+                Console.WriteLine("Invalid Operation! No match was found for the id supplied");
+                return;
+            }
+
+            //if a user is found, perform the requested update 
+
+            if (userToUpdate.FirstName != null) userToUpdate.FirstName = userUpdateInfo.FirstName;
+            if (userUpdateInfo.LastName != null) userToUpdate.LastName = userUpdateInfo.LastName;
+            if (userUpdateInfo.EmailAddress != null) userToUpdate.EmailAddress = userUpdateInfo.EmailAddress;
+
+            _contex.SaveChanges();
+        }
 
 
 
 
+        // Delete User
         public void Delete (Guid id)
         {
             User userToDelete = FetchAll()

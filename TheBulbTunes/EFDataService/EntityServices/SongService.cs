@@ -101,12 +101,12 @@ namespace TheBulbTunes.EFDataService.EntityServices
 
             // A match song was found. perform the requested update
 
-            if (songToUpdate.Title != null) songToUpdate.Title = songToUpdate.Title;
-            if (songToUpdate.Artist != null) songToUpdate.Artist = songToUpdate.Artist;
-            if (songToUpdate.Album != null) songToUpdate.Album = songToUpdate.Album;
-            if (songToUpdate.Genre != null) songToUpdate.Genre = songToUpdate.Genre;
-            if (songToUpdate.FeaturedArtist != null) songToUpdate.FeaturedArtist= songToUpdate.FeaturedArtist;
-            if (songToUpdate.ReleasedDate != null) songToUpdate.ReleasedDate = songToUpdate.ReleasedDate;
+            if (songUpdatedInfo.Title != null) songToUpdate.Title = songUpdatedInfo.Title;
+            if (songUpdatedInfo.Artist != null) songToUpdate.Artist = songUpdatedInfo.Artist;
+            if (songUpdatedInfo.Album != null) songToUpdate.Album = songUpdatedInfo.Artist;
+            if (songUpdatedInfo.Genre != null) songToUpdate.Genre = songUpdatedInfo.Genre;
+            if (songUpdatedInfo.FeaturedArtist != null) songToUpdate.FeaturedArtist= songUpdatedInfo.FeaturedArtist;
+            if (songUpdatedInfo.ReleasedDate != null) songToUpdate.ReleasedDate = songUpdatedInfo.ReleasedDate;
 
             _context.SaveChanges();
         }

@@ -31,9 +31,9 @@ namespace TheBulbTunes
             Guid UserToDelete8 = new Guid("d2c1f050-65cc-44d0-3d88-08d963063ef5");
             Guid UserToDelete9 = new Guid("dd2b4b3f-6a56-476b-3d87-08d963063ef5");
             Guid UserToDelete0 = new Guid("b348348d-fc13-438f-3d89-08d963063ef5");
+            
 
-
-
+            /*
             userService.Delete(UserToDelete0);
             userService.Delete(UserToDelete1);
             userService.Delete(UserToDelete2);
@@ -55,7 +55,7 @@ namespace TheBulbTunes
                 Console.Write($"{user.FirstName}\t{user.LastName}\t{user.EmailAddress}");
             }
 
-
+            */
             #endregion
 
 
