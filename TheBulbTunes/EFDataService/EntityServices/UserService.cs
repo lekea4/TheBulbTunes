@@ -13,6 +13,8 @@ namespace TheBulbTunes.EFDataService.EntityServices
 
         private List<User> _users;
 
+   
+
         //Create a User 
 
         public void Create(string firstName, string lastName, string emailAddress)
@@ -31,6 +33,37 @@ namespace TheBulbTunes.EFDataService.EntityServices
         public List<User> FetchAll()
         {
             return _contex.Users.ToList();
+        }
+
+        public List<User> FetchWithFilter(string firstNameFilter = null, string lastNameFilter = null, string emailAddressFilter = null)
+        {
+           
+            _users   = FetchAll();
+
+            if (firstNameFilter != null)
+                _users = SearchByFirstName(firstNameFilter, _users);
+
+            if (lastNameFilter != null)
+                _users = SearchByLastName(lastNameFilter, _users);
+            if (emailAddressFilter != null)
+                _users = SearchByEmail(emailAddressFilter, _users);
+
+            return _users;
+        }
+
+        private List<User> SearchByFirstName(string searchValue, List<User> users)
+        {
+            return users.Where(u => u.FirstName.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        private List <User> SearchByLastName(string searchValue, List<User> users)
+        {
+            return users.Where(u => u.LastName.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        private List<User> SearchByEmail(string searchValue, List<User> users)
+        {
+            return users.Where(u => u.EmailAddress.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
     }

@@ -12,7 +12,7 @@ namespace TheBulbTunes.EFDataService
     public class TheBulbTunesDBContext : DbContext
     {
         string connectionString;
-        //Constructor to set uo the connection to the DB 
+        //Constructor to set up the connection to the DB 
         public TheBulbTunesDBContext()
         {
             connectionString = "Data Source =.; Initial Catalog = TheBulbTunesDB; Integrated Security = True; Pooling = False";

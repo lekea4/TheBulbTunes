@@ -9,15 +9,34 @@ namespace TheBulbTunes
     {
         static void Main(string[] args)
         {
-
+            #region Consuming the User Service 
 
             UserService userService = new UserService();
 
-            userService.Create("Temiloluwa", "Tegbe", "temiloluwau.tegbe@thebulb.africa");
-            userService.Create("Adeleke", "Ayinde", "adeleke.ayinde@thebulb.africa");
-            userService.Create("Ndudim", "Hope", "hope.ndudim@thebulb.africa");
-            userService.Create("Bayowa", "Odometa", "bayowa.odometa@thebulb.africa");
-            userService.Create("Nkechi", "Okeke", "nkechi.okeke@gmail.com");
+            //userService.Create("Temiloluwa", "Tegbe", "temiloluwau.tegbe@thebulb.africa");
+            //userService.Create("Adeleke", "Ayinde", "adeleke.ayinde@thebulb.africa");
+            //userService.Create("Ndudim","Hope", "hope.ndudim@thebulb.africa");
+            //userService.Create("Bayowa", "Odometa", "bayowa.odometa@thebulb.africa");
+            //userService.Create("Nkechi", "Okeke", "nkechi.okeke@gmail.com");
+            /*
+                        List<User> availableUsers = userService.FetchAll();
+
+                        Console.WriteLine("First Name \t\tLast Name \t\tEmail");
+
+                        foreach (User user in availableUsers)
+                        {
+                            Console.WriteLine("\n\n");
+                            Console.Write($"{user.FirstName}\t{user.LastName}\t{user.EmailAddress}");
+                        } */
+
+
+            #region Consuming the Fetch with Filter Method 
+
+            List<User> filteredUser1 = userService.FetchWithFilter("Tem","te","te");
+            List<User> filteredUser2 = userService.FetchWithFilter("odo","odo","odo");
+            //List<User> filteredUser1 = userService.FetchWithFilter("", "", "");
+            //st<User> filteredUser1 = userService.FetchWithFilter("", "", "");
+
 
             List<User> availableUsers = userService.FetchAll();
 
@@ -29,16 +48,22 @@ namespace TheBulbTunes
                 Console.Write($"{user.FirstName}\t{user.LastName}\t{user.EmailAddress}");
             }
 
+            #endregion
 
 
+            #endregion
+
+
+            #region Consuming the Song Services 
             SongService songService = new SongService();
 
+            
 
             #region  Using the Update and Delete Method 
 
 
             //Fetch all songs before Update  
-
+/*
             List<Song> availableSongs = songService.FetchAll();
 
             Console.WriteLine("\n\n CURRENTLY AVAILABLE SONGS: \n");
@@ -85,19 +110,20 @@ namespace TheBulbTunes
             }
 
 
-
+            */
 
             //Using the Delete method
 
 
             //Set ID of song to delete 
-
+            /*
             Guid songToDelete1 = new Guid("0d414e2a-77e4-4caf-aae2-08d962485061");
             Guid songToDelete2 = new Guid("b0ae362f-bced-4797-aae3-08d962485061");
             Guid songToDelete3 = new Guid("60288c52-5981-4100-aae4-08d962485061");
             Guid songToDelete4 = new Guid("63b4de79-239d-4687-aae5-08d962485061");
             Guid songToDelete5 = new Guid("7125438c-456c-46d1-aae6-08d962485061");
 
+            */
             // Guid songToDelete6 = new Guid("");
 
 
@@ -153,6 +179,8 @@ namespace TheBulbTunes
             //    Console.WriteLine();
             //    Console.Write($"{song.Title}\t\t{song.Artist}\t\t{song.Album}");
             //}
+
+            #endregion
 
             #endregion
         }
