@@ -18,6 +18,48 @@ namespace TheBulbTunes
 
             UserService userService = new UserService();
 
+            #region Consuming the Update Method 
+
+            //fetch all user data before update 
+            List<User> availableUser = userService.FetchAll();
+            Console.WriteLine("First Name \t\tLast Name \t\tEmail");
+
+            foreach (User user in availableUser)
+            {
+                Console.WriteLine("\n\n");
+                Console.Write($"{user.FirstName}\t{user.LastName}\t{user.EmailAddress}");
+            }
+
+            //set the Id of user to update 
+
+            Guid idUserToUpdate = new Guid("42810d2d-1edc-4b7a-8123-08d9628d7045");
+
+            //set the information to be updated
+
+            User userToUpdate = new User()
+            {
+                EmailAddress = "lekea4@gmail.com"
+            };
+
+            //invoking the update method 
+            userService.Update(idUserToUpdate, userToUpdate);
+
+
+            //fetch all users after update 
+
+            availableUser = userService.FetchAll();
+
+            Console.WriteLine("\n\n CURRENTLY AVAILABLE USERS: \n");
+            foreach (User user in availableUser)
+            {
+                Console.WriteLine("\n\n");
+                Console.Write($"{user.FirstName}\t{user.LastName}\t{user.EmailAddress}");
+            }
+
+
+
+            #endregion
+
 
             #region Consuming the Delete method 
 
