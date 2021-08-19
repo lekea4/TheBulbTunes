@@ -66,5 +66,24 @@ namespace TheBulbTunes.EFDataService.EntityServices
             return users.Where(u => u.EmailAddress.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
+
+
+
+
+        public void Delete (Guid id)
+        {
+            User userToDelete = FetchAll()
+                .Where(u => u.UserID == id)
+                .FirstOrDefault();
+
+            if (userToDelete == null)
+            {
+                Console.WriteLine("Invalid operation! No match was found for the id you supplied");
+                return;
+            }
+            _contex.Users.Remove(userToDelete);
+            _contex.SaveChanges();
+        }
+
     }
 }
