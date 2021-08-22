@@ -45,12 +45,14 @@ namespace TheBulbTunes.EFDataService.EntityServices
 
             if (lastNameFilter != null)
                 _users = SearchByLastName(lastNameFilter, _users);
+
             if (emailAddressFilter != null)
                 _users = SearchByEmail(emailAddressFilter, _users);
 
             return _users;
         }
 
+        // Private Helper Methods 
         private List<User> SearchByFirstName(string searchValue, List<User> users)
         {
             return users.Where(u => u.FirstName.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
@@ -82,7 +84,7 @@ namespace TheBulbTunes.EFDataService.EntityServices
 
             //if a user is found, perform the requested update 
 
-            if (userToUpdate.FirstName != null) userToUpdate.FirstName = userUpdateInfo.FirstName;
+            if (userUpdateInfo.FirstName != null) userToUpdate.FirstName = userUpdateInfo.FirstName;
             if (userUpdateInfo.LastName != null) userToUpdate.LastName = userUpdateInfo.LastName;
             if (userUpdateInfo.EmailAddress != null) userToUpdate.EmailAddress = userUpdateInfo.EmailAddress;
 

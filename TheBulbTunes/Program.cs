@@ -9,8 +9,51 @@ namespace TheBulbTunes
     {
         static void Main(string[] args)
         {
+            #region  consuming the Favorite services 
+
+            FavouriteService favouriteService = new FavouriteService();
+
+            #region Invoking the create favourite method
+            //set id of the song to be favourited 
+
+            Guid idOfFavouriteSong1 = new Guid("2782df5d-4652-444d-e208-08d9623b4f6d"); //get down on it 
+            Guid idOfFavouriteSong2 = new Guid("2782df5d-4652-444d-e208-08d9623b4f6d"); // The Monster
+            Guid idOfFavouriteSong3 = new Guid("60ce4d35-50aa-4e37-e20a-08d9623b4f6d"); //essence by wizkid
+
+            //set id of user who wants to favorite a song 
+
+            Guid idOfUser1 = new Guid("49125dda-c415-4435-8122-08d9628d7045");
+            Guid idOfUser2 = new Guid("7a75639f-a950-4e1b-8125-08d9628d7045");
+            Guid idOfUser3 = new Guid("5566ae35-7e39-4259-8124-08d9628d7045");
+
+            //invoking the create method 
+
+            favouriteService.Create(idOfFavouriteSong1, idOfUser1);
+            favouriteService.Create(idOfFavouriteSong2, idOfUser2);
+            favouriteService.Create(idOfFavouriteSong3, idOfUser3);
+
+            //fetch the favourtie list 
+            List<Favourite> availableFavourite = favouriteService.FetchAll();
+
+            Console.WriteLine("\n\n Currently Available Favourite: \n");
+            Console.Write("Title\t\t Artist\t\t\t Favourite By");
+
+            foreach (Favourite favourite in availableFavourite)
+            {
+                Console.WriteLine();
+                Console.Write($"{favourite.SelectedSong.Title}\t {favourite.SelectedSong.Artist}\t {favourite.AddedBy.FirstName}");
+
+            }
 
 
+
+            #endregion
+
+
+
+
+
+            #endregion
 
 
 
